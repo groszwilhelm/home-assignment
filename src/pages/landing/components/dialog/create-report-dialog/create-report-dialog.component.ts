@@ -9,7 +9,7 @@ export class CreateReportDialog extends HTMLElement {
     <hmw-dialog-header title="Create Report"></hmw-dialog-header>
 
     <hmw-dialog-section>
-      lorem dada dasdasdadsadasdasd das dasdsa das dad asd sa
+      <hmw-report-details-view></hmw-report-details-view>
     </hmw-dialog-section>
 
     <hmw-dialog-footer>

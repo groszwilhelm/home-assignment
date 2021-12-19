@@ -19,6 +19,7 @@ export class Checkbox extends HTMLElement {
     this.renderTemplate();
     this.setCheckboxBindingIds();
     this.setInputs();
+    this.setClasses();
   }
 
   public disconnectedCallback(): void {
@@ -44,11 +45,15 @@ export class Checkbox extends HTMLElement {
     element.setAttribute(attribute, value);
   }
 
-  private setInputs() {
+  private setInputs(): void {
     const labelInput = this.getAttribute('label');
     const labelNode = this.querySelector('[data-label="label"]');
 
     (labelNode as any).innerText = labelInput;
+  }
+
+  private setClasses(): void {
+    this.classList.add('u-display-block');
   }
 }
 

@@ -23,8 +23,11 @@ export class Input extends HTMLElement {
   private setInputs(): void {
     const inputElementRef = this.querySelector('input');
     const value = this.getAttribute('value');
+    const shouldUpdateValue = value && !inputElementRef.value;
 
-    inputElementRef.setAttribute('value', value);
+    if (shouldUpdateValue) {
+      inputElementRef.setAttribute('value', value);
+    }
   }
 }
 

@@ -14,3 +14,23 @@
   display: flex;
   flex-direction: column;
 }
+
+.u-margin-top-large {
+  margin-top: var(--space-large);
+}
+
+.u-margin-top-medium {
+  margin-top: var(--space-medium);
+}
+
+.u-margin-top-default {
+  margin-top: var(--space-default);;
+}
+
+.u-margin-top-small {
+  margin-top: var(--space-small);;
+}
+
+.u-margin-bottom-medium {
+  margin-bottom: var(--space-medium);
+}
