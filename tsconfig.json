@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "importHelpers": true,
     "module": "es2020",
     "outDir": "./dist/out-tsc",
@@ -16,11 +16,17 @@
       "es2017",
       "dom",
     ],
+    "paths": {
+      "@components/*": [
+        "shared/components/*"
+      ]
+    }
   },
   "files": [
     "src/main.ts",
   ],
   "include": [
     "src/**/*.d.ts",
+    "./src"
   ]
 }

@@ -9,7 +9,8 @@ export class Dialog extends HTMLElement {
     <div class="dialog-container" data-dialog-container="true"></div>
   `;
   
-  private subscription: number;
+  private openSubscription: number;
+  private closeSubscription: number;
 
   public connectedCallback(): void {
     this.handleOpenStream();
@@ -19,11 +20,14 @@ export class Dialog extends HTMLElement {
   public disconnectedCallback(): void {
     dialogService
       .getOpenObservable()
-      .unsubscribe(this.subscription);
+      .unsubscribe(this.openSubscription);
+
+    dialogService.getCloseObservable()
+      .unsubscribe(this.closeSubscription)
   }
 
   private handleOpenStream(): void {
-    this.subscription = dialogService.getOpenObservable()
+    this.openSubscription = dialogService.getOpenObservable()
       .subscribe((htmlTemplate) => this.attachDialog(htmlTemplate));
   }
 
@@ -41,11 +45,13 @@ export class Dialog extends HTMLElement {
   }
 
   private handleCloseStream(): void {
-    dialogService.getClosedObservable()
-      .subscribe(() => {
-        const rootNode = this.querySelector('[data-dialog-container]');
-        this.removeChild(rootNode);
-      });
+    this.closeSubscription = dialogService.getCloseObservable()
+      .subscribe(() => this.destroyTemplate());
+  }
+
+  private destroyTemplate() {
+    const rootNode = this.querySelector('[data-dialog-container]');
+    this.removeChild(rootNode);
   }
 
   private renderTemplate(): void {

@@ -16,7 +16,7 @@ class DialogService {
     return this.openMessageBus;
   }
 
-  public getClosedObservable(): PubSub<boolean> {
+  public getCloseObservable(): PubSub<boolean> {
     return this.closeMessageBus;
   }
 }

@@ -6,6 +6,7 @@ import { Dialog } from './dialog/dialog.component';
 import { DialogHeader } from './dialog/header.component';
 import { DialogFooter } from './dialog/footer.component';
 import { DialogSection } from './dialog/section.component';
+import { Alert } from './alert/alert.component';
 
 export const sharedComponents = [
   ...icons,
@@ -16,4 +17,5 @@ export const sharedComponents = [
   DialogHeader,
   DialogSection,
   DialogFooter,
+  Alert,
 ];
