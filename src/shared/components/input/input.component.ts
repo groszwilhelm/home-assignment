@@ -1,7 +1,3 @@
-enum InputClass {
-  Active = 'input--active',
-}
-
 export class Input extends HTMLElement {
   public static register(): void {
     window.customElements.define('hmw-input', Input);

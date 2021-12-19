@@ -1,13 +1,14 @@
 .input {
   height: 32px;
   width: 240px;
+
   border: 2px solid var(--color-grey);
   border-radius: 5px;
   padding: 0 6px;
   outline: 0;
 
   &:hover {
-    border-color: var(--color-grey-dark);
+    border-color: var(--color-black);
   }
 
   &:focus {

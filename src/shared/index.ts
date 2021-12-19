@@ -1,7 +1,9 @@
 import { Input } from './components/input/input.component';
+import { Checkbox } from './components/checkbox/checkbox.component';
 
 const components = [
   Input,
+  Checkbox,
 ]
 
 function registerComponents() {
