@@ -1,0 +1,35 @@
+.input {
+  height: 32px;
+  width: 240px;
+  border: 2px solid var(--color-grey);
+  border-radius: 5px;
+  padding: 0 6px;
+  outline: 0;
+
+  &:hover {
+    border-color: var(--color-grey-dark);
+  }
+
+  &:focus {
+    border-color: var(--color-blue);
+  }
+
+  &:active {
+    border-color: var(--color-blue-light);
+  }
+
+  &:disabled {
+    background-color: var(--color-white);
+    border-color: var(--color-grey-light);
+
+    &::placeholder {
+      font-style: italic;
+      color: var(--color-grey);
+    }
+  }
+
+  &--read-only {
+    background-color: var(--color-grey-light);
+    border: 0;
+  }
+}
