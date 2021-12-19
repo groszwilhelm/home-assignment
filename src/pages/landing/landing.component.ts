@@ -4,15 +4,24 @@ export class Landing extends HTMLElement {
   }
 
   public static template = `
-    <section class="container">
-      <hmw-header></hmw-header>
+    <hmw-header></hmw-header>
+  
+    <section class="container u-flex-flow">
+      <header>
+        <h2>Page title</h2>
+      </header>
 
-      <section>
+      <section class="create-report">
         <header>
-          <h2>Landing page</h2>
+          <hmw-icon-rocket></hmw-icon-rocket>
+          <h3> Start creating reports </h3>
         </header>
 
-        
+        <p>You don't have any reports defined yet</p>
+
+        <footer>
+          <button class="btn btn--primary">CREATE REPORT</button>
+        </footer>
       </section>
     </section>
   
@@ -21,6 +30,7 @@ export class Landing extends HTMLElement {
 
   public connectedCallback(): void {
     this.renderTemplate();
+    this.attachClasses();
   }
 
   public disconnectedCallback(): void {
@@ -29,6 +39,10 @@ export class Landing extends HTMLElement {
   private renderTemplate(): void {
     const node = document.importNode(template.content, true);
     this.appendChild(node);
+  }
+
+  private attachClasses() {
+    this.classList.add('u-flex-flow', 'u-height-100');
   }
 }
 

@@ -1,3 +1,6 @@
 .container {
   margin-left: calc(var(--menu-width) + 40px);
+  margin-top: var(--header-height);
+
+  height: 100%;
 }

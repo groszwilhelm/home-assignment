@@ -1,0 +1,13 @@
+.btn {
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 0;
+
+  font-size: .9rem;
+  cursor: pointer;
+
+  &--primary {
+    color: white;
+    background-color: var(--color-primary);
+  }
+}
