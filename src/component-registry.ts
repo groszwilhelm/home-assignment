@@ -3,12 +3,14 @@ import { Checkbox } from './shared/components/checkbox/checkbox.component';
 import { Landing } from './pages/landing/landing.component';
 import { Menu } from './pages/landing/components/menu/menu.component';
 import { icons } from './shared/components/icons';
+import { Header } from './pages/landing/components/header/header.component';
 
 const components = [
   Input,
   Checkbox,
   Landing,
   Menu,
+  Header,
   ...icons
 ];
 

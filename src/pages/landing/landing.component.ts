@@ -5,9 +5,15 @@ export class Landing extends HTMLElement {
 
   public static template = `
     <section class="container">
-      <header>
-        <h2>Landing page</h2>
-      </header>
+      <hmw-header></hmw-header>
+
+      <section>
+        <header>
+          <h2>Landing page</h2>
+        </header>
+
+        
+      </section>
     </section>
   
     <hmw-menu></hmw-menu>

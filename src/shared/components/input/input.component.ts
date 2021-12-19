@@ -9,6 +9,7 @@ export class Input extends HTMLElement {
 
   public connectedCallback(): void {
     this.renderTemplate();
+    this.setInputs();
   }
 
   public disconnectedCallback(): void {
@@ -17,6 +18,13 @@ export class Input extends HTMLElement {
   private renderTemplate(): void {
     const node = document.importNode(template.content, true);
     this.appendChild(node);
+  }
+
+  private setInputs(): void {
+    const inputElementRef = this.querySelector('input');
+    const value = this.getAttribute('value');
+
+    inputElementRef.setAttribute('value', value);
   }
 }
 
