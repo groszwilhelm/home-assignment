@@ -6,7 +6,7 @@ const components = [
   ...pageComponents,
 ];
 
-function registerComponents() {
+export function registerComponents() {
   for(let component of components) {
     if (component.register) {
       component.register();
@@ -15,8 +15,4 @@ function registerComponents() {
 
     console.error(`[ComponentRegistry]: Registering ${component.name} has failed, make sure to implement register static method!`);
   }
-}
-
-export function registerSharedComponents() {
-  registerComponents();
 }

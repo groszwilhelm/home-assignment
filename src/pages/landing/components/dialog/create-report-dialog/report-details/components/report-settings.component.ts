@@ -19,17 +19,38 @@ export class ReportSettingsForm extends HTMLElement {
 
       <hmw-form-group class="u-margin-top-default">
         <label for="settings-recurrence" slot="label">Recurrence</label>
-        <hmw-input id="settings-recurrence" slot="form-control"></hmw-input>
+        <hmw-dropdown
+          id="settings-recurrence"
+          items="[
+            { 'id': '1', 'displayText': 'Weekly'},
+            { 'id': '2', 'displayText': 'Monthly'}
+          ]" 
+          slot="form-control"
+        ></hmw-dropdown>
       </hmw-form-group>
 
       <hmw-form-group class="u-margin-top-default">
         <label for="settings-on" slot="label">On</label>
-        <hmw-input id="settings-on" slot="form-control"></hmw-input>
+        <hmw-dropdown
+          id="settings-on"
+          items="[
+            { 'id': '1', 'displayText': 'Monday'},
+            { 'id': '2', 'displayText': 'Tuesday'}
+          ]" 
+          slot="form-control"
+        ></hmw-dropdown>
       </hmw-form-group>
 
       <hmw-form-group class="u-margin-top-medium">
         <label for="settings-reporting-interval" slot="label">Reporting interval</label>
-        <hmw-input id="settings-reporting-interval" slot="form-control"></hmw-input>
+        <hmw-dropdown
+          id="settings-on"
+          items="[
+            { 'id': '1', 'displayText': 'Last 7 days'},
+            { 'id': '2', 'displayText': 'Last 30 days'}
+          ]" 
+          slot="form-control"
+        ></hmw-dropdown>
       </hmw-form-group>
 
       <hmw-form-group class="u-margin-top-medium">

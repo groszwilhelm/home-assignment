@@ -10,6 +10,18 @@
   display: block;
 }
 
+.u-display-none {
+  display: none;
+}
+
+.u-display-inline-block {
+  display: inline-block;
+}
+
+.u-position-relative {
+  position: relative;
+}
+
 .u-flex-flow {
   display: flex;
   flex-direction: column;
