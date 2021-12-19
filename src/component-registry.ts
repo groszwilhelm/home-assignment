@@ -4,6 +4,11 @@ import { Landing } from './pages/landing/landing.component';
 import { Menu } from './pages/landing/components/menu/menu.component';
 import { icons } from './shared/components/icons';
 import { Header } from './pages/landing/components/header/header.component';
+import { Dialog } from './shared/components/dialog/dialog.component';
+import { DialogHeader } from './shared/components/dialog/header.component';
+import { DialogFooter } from './shared/components/dialog/footer.component';
+import { DialogSection } from './shared/components/dialog/section.component';
+import { CreateReportDialog } from './pages/landing/components/dialog/create-report-dialog/create-report-dialog.component';
 
 const components = [
   Input,
@@ -11,6 +16,11 @@ const components = [
   Landing,
   Menu,
   Header,
+  Dialog,
+  DialogHeader,
+  DialogFooter,
+  DialogSection,
+  CreateReportDialog,
   ...icons
 ];
 

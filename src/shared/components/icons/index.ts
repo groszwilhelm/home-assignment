@@ -15,6 +15,7 @@ import { IconReports } from './reports';
 import { IconRiskManagement } from './risk-management';
 import { IconRocket } from './rocket';
 import { IconSandboxAnalyzer } from './sandbox-adnalyzer';
+import { IconCross } from './cross';
 
 export const icons = [
   IconDashboard,
@@ -34,4 +35,5 @@ export const icons = [
   IconRiskManagement,
   IconRocket,
   IconSandboxAnalyzer,
+  IconCross,
 ];

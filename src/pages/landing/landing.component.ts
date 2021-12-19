@@ -1,3 +1,5 @@
+import { dialogService } from '../../shared/components/dialog/dialog.service';
+
 export class Landing extends HTMLElement {
   public static register(): void {
     window.customElements.define('hmw-landing', Landing);
@@ -20,7 +22,7 @@ export class Landing extends HTMLElement {
         <p>You don't have any reports defined yet</p>
 
         <footer>
-          <button class="btn btn--primary">CREATE REPORT</button>
+          <button class="btn btn--primary" data-create-report="true">CREATE REPORT</button>
         </footer>
       </section>
     </section>
@@ -31,6 +33,7 @@ export class Landing extends HTMLElement {
   public connectedCallback(): void {
     this.renderTemplate();
     this.attachClasses();
+    this.attachListeners();
   }
 
   public disconnectedCallback(): void {
@@ -41,8 +44,18 @@ export class Landing extends HTMLElement {
     this.appendChild(node);
   }
 
-  private attachClasses() {
+  private attachClasses(): void {
     this.classList.add('u-flex-flow', 'u-height-100');
+  }
+
+  private attachListeners(): void {
+    const buttonElementRef: HTMLButtonElement = this.querySelector('[data-create-report]');
+
+    buttonElementRef.addEventListener('click', this.openDialog)
+  }
+
+  private openDialog() {
+    dialogService.open(`<hmw-create-report-dialog></hmw-create-report-dialog>`);
   }
 }
 
