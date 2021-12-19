@@ -1,4 +1,4 @@
 import './styles/styles.scss';
-import { registerSharedComponents } from './shared';
+import { registerSharedComponents } from './component-registry';
 
 registerSharedComponents();

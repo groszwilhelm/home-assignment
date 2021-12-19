@@ -1,10 +1,16 @@
-import { Input } from './components/input/input.component';
-import { Checkbox } from './components/checkbox/checkbox.component';
+import { Input } from './shared/components/input/input.component';
+import { Checkbox } from './shared/components/checkbox/checkbox.component';
+import { Landing } from './pages/landing/landing.component';
+import { Menu } from './pages/landing/components/menu/menu.component';
+import { icons } from './shared/components/icons';
 
 const components = [
   Input,
   Checkbox,
-]
+  Landing,
+  Menu,
+  ...icons
+];
 
 function registerComponents() {
   for(let component of components) {

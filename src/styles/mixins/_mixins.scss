@@ -1,0 +1,12 @@
+// Hide scroll bar
+@mixin invisible-scroll {
+  // Firefox
+  scrollbar-width: none;
+  // Internet Explorer 10+
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    // Safari and Chrome
+    display: none;
+  }
+}
