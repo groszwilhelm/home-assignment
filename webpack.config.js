@@ -10,10 +10,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.html$/i,
-        loader: "html-loader",
-      },
-      {
         test: /\.scss$/,
         use: [
           process.env.NODE_ENV !== 'production'
@@ -36,7 +32,9 @@ module.exports = {
       filename: "[name].css",
       chunkFilename: "[id].css",
     }),
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
+    }),
   ],
 
   resolve: {
