@@ -1,11 +1,11 @@
 import { NavItem } from './menu.models';
 
 export class Menu extends HTMLElement {
-  public static register(): void {
+  static register() {
     window.customElements.define('hmw-menu', Menu);
   }
-
-  public static template = `
+  
+  static template = `
     <nav class="menu-container">
       <span class="menu-logo">
         <hmw-icon-logo></hmw-icon-logo>

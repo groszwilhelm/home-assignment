@@ -1,4 +1,7 @@
-const { join } = require('path')
+const { join } = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/main.ts',
@@ -7,9 +10,15 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.html$/i,
+        loader: "html-loader",
+      },
+      {
         test: /\.scss$/,
         use: [
-          'style-loader',
+          process.env.NODE_ENV !== 'production'
+            ? 'style-loader'
+            : MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader'
         ]
@@ -22,6 +31,14 @@ module.exports = {
     ],
   },
 
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css",
+    }),
+    new HtmlWebpackPlugin(),
+  ],
+
   resolve: {
     extensions: ['.ts', '.js'],
   },
@@ -33,4 +50,8 @@ module.exports = {
     port: 4200
   },
 
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+  },
 }
