@@ -10,9 +10,7 @@ export class Alert extends HTMLElement {
     <div class="alert" data-alert="true">
       <span class="alert__icon"></span>
       
-      <div class="alert__text">
-        Successfully saved the report
-      </div>
+      <div class="alert__text" data-alert-text="true"></div>
 
       <span class="alert__close" data-close="true">
         <hmw-icon-cross></hmw-icon-cross>
@@ -54,6 +52,7 @@ export class Alert extends HTMLElement {
     this.destroyTemplateAfterMilisecons(this.closeTimeout);
     this.attachClass(config.type);
     this.attachListeners();
+    this.renderAlertText(config.text);
   }
 
   /**
@@ -98,6 +97,12 @@ export class Alert extends HTMLElement {
     const closeElementRef: HTMLButtonElement = this.querySelector('[data-close]');
 
     closeElementRef.addEventListener('click', this.destroyTemplate);
+  }
+
+  private renderAlertText(text: string): void {
+    const alertTextElementRef = this.querySelector('[data-alert-text]');
+
+    alertTextElementRef.innerHTML = text;
   }
 }
 

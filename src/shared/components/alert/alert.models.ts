@@ -4,6 +4,7 @@ export enum AlertType {
 
 export class AlertConfig {
   constructor(
-    public type: AlertType
+    public type: AlertType,
+    public text: string,
   ) {}
 }

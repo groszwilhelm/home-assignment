@@ -42,11 +42,8 @@ export class FormGroup extends HTMLElement {
   }
 
   private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
-
-    // this.attachShadow({ mode: 'open' });
-    // this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 }
 

@@ -43,7 +43,8 @@ export class CreateReportDialog extends HTMLElement {
   }
 
   private showAlert(type: AlertType) {
-    const config = new AlertConfig(type);
+    const alertText = 'Successfully saved the report';
+    const config = new AlertConfig(type, alertText);
 
     alertService.open(config);
   }
