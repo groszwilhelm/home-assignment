@@ -1,23 +1,15 @@
-export class Input extends HTMLElement {
-  public static register(): void {
-    window.customElements.define('hmw-input', Input);
-  }
+import { Component } from '@custom/component.decorator';
+import { CustomComponent } from '@custom/custom-component';
 
-  public static template = `
+@Component({
+  selector: 'hmw-input',
+  html: `
     <input class="input" placeholder="Placeholder" />
-  `;
-
+  `
+})
+export class Input extends CustomComponent {
   public connectedCallback(): void {
-    this.renderTemplate();
     this.setInputs();
-  }
-
-  public disconnectedCallback(): void {
-  }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
   }
 
   private setInputs(): void {
@@ -30,6 +22,3 @@ export class Input extends HTMLElement {
     }
   }
 }
-
-const template = document.createElement('template');
-template.innerHTML = Input.template;

@@ -1,32 +1,29 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "importHelpers": true,
     "module": "es2020",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
+    "experimentalDecorators": true,
     "target": "es2018",
     "typeRoots": [
       "node_modules/@types"
     ],
+    "paths": {
+      "@custom/*": [
+        "src/shared/models/*"
+      ]
+    },
     "lib": [
       "es2017",
       "dom",
     ],
-    "paths": {
-      "@components/*": [
-        "shared/components/*"
-      ]
-    }
   },
-  "files": [
-    "src/main.ts",
-  ],
   "include": [
-    "src/**/*.d.ts",
-    "./src"
+    "./**/*"
   ]
 }

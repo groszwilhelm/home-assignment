@@ -1,11 +1,10 @@
+import { Component } from '@custom/component.decorator';
+import { CustomComponent } from '@custom/custom-component';
 import { NavItem } from './menu.models';
 
-export class Menu extends HTMLElement {
-  static register() {
-    window.customElements.define('hmw-menu', Menu);
-  }
-  
-  static template = `
+@Component({
+  selector: 'hmw-menu',
+  html: `
     <nav class="menu-container">
       <span class="menu-logo">
         <hmw-icon-logo></hmw-icon-logo>
@@ -13,8 +12,9 @@ export class Menu extends HTMLElement {
 
       <ul class="menu" data-menu="true"></ul>
     </nav>
-  `;
-
+  `
+})
+export class Menu extends CustomComponent {
   private navItems = [
     new NavItem('Dashboard', 'hmw-icon-dashboard'),
     new NavItem('Incidents', 'hmw-icon-incidents'),
@@ -31,7 +31,6 @@ export class Menu extends HTMLElement {
   ]
 
   public connectedCallback(): void {
-    this.renderTemplate();
     this.renderNavItems();
     this.attachEventListeners();
   }
@@ -40,11 +39,6 @@ export class Menu extends HTMLElement {
     const menuElementRef: HTMLUListElement = this.querySelector('[data-menu]');
 
     menuElementRef.removeEventListener('click', this.handeItemClicks);
-  }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
   }
 
   /**
@@ -78,6 +72,3 @@ export class Menu extends HTMLElement {
     console.log(`Menu item with id: ${id} has been clicked`);
   }
 }
-
-const template = document.createElement('template');
-template.innerHTML = Menu.template;

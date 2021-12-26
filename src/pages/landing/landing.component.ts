@@ -1,11 +1,10 @@
+import { Component } from '@custom/component.decorator';
+import { CustomComponent } from '@custom/custom-component';
 import { dialogService } from '../../shared/components/dialog/dialog.service';
 
-export class Landing extends HTMLElement {
-  public static register(): void {
-    window.customElements.define('hmw-landing', Landing);
-  }
-
-  public static template = `
+@Component({
+  selector: 'hmw-landing',
+  html: `
     <hmw-header></hmw-header>
   
     <section class="container u-flex-flow">
@@ -28,20 +27,12 @@ export class Landing extends HTMLElement {
     </section>
   
     <hmw-menu></hmw-menu>
-  `;
-
+  `
+})
+export class Landing extends CustomComponent {
   public connectedCallback(): void {
-    this.renderTemplate();
     this.attachClasses();
     this.attachListeners();
-  }
-
-  public disconnectedCallback(): void {
-  }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
   }
 
   private attachClasses(): void {
@@ -58,6 +49,3 @@ export class Landing extends HTMLElement {
     dialogService.open(`<hmw-create-report-dialog></hmw-create-report-dialog>`);
   }
 }
-
-const template = document.createElement('template');
-template.innerHTML = Landing.template;

@@ -1,25 +1,19 @@
+import { Component } from '@custom/component.decorator';
+import { CustomComponent } from '@custom/custom-component';
 import { dialogService } from './dialog.service';
 
-export class DialogHeader extends HTMLElement {
-  public static register(): void {
-    window.customElements.define('hmw-dialog-header', DialogHeader);
-  }
-
-  public static template = `
+@Component({
+  selector: 'hmw-dialog-header',
+  html: `
     <h3></h3>
     <hmw-icon-cross class="dialog-action" data-close="true"></hmw-icon-cross>
-  `;
-
+  `
+})
+export class DialogHeader extends CustomComponent {
   public connectedCallback(): void {
-    this.renderTemplate();
     this.addClasses();
     this.addEventListeners();
     this.setInputs();
-  }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
   }
 
   private addClasses(): void {
@@ -43,6 +37,3 @@ export class DialogHeader extends HTMLElement {
     headingElementRef.innerText = title;
   }
 }
-
-const template = document.createElement('template');
-template.innerHTML = DialogHeader.template;

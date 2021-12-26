@@ -13,6 +13,6 @@ export function registerComponents() {
       continue;
     }
 
-    console.error(`[ComponentRegistry]: Registering ${component.name} has failed, make sure to implement register static method!`);
+    console.error(`[ComponentRegistry]: Registering ${component.name} has failed, make sure to decorate your component with @Component decorator!`);
   }
 }

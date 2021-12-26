@@ -1,9 +1,9 @@
-export class IconRiskManagement extends HTMLElement {
-  public static register(): void {
-    window.customElements.define('hmw-icon-risk-management', IconRiskManagement);
-  }
+import { Component } from '@custom/component.decorator';
+import { CustomComponent } from '@custom/custom-component';
 
-  public static template = `
+@Component({
+  selector: 'hmw-icon-risk-management',
+  html: `
     <svg id="icons" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
       <rect id="icons_dashboard_active_background" data-name="icons/dashboard/active background" width="32" height="32" fill="none"/>
       <g id="icons_dashboard_active" data-name="icons/dashboard/active" transform="translate(4 4)">
@@ -15,20 +15,6 @@ export class IconRiskManagement extends HTMLElement {
           <path id="Path_401" data-name="Path 401" d="M7.95,0,5.34,6.21H8.42v4.36h.47L11.5,4.41H8.42V0Z" fill="rgba(255,255,255,0.8)"/>
         </g>
       </g>
-    </svg>`;
-
-  public connectedCallback(): void {
-    this.renderTemplate();
-  }
-
-  public disconnectedCallback(): void {
-  }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
-  }
-}
-
-const template = document.createElement('template');
-template.innerHTML = IconRiskManagement.template;
+    </svg>`
+})
+export class IconRiskManagement extends CustomComponent { }

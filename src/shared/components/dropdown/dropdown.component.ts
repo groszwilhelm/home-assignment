@@ -1,11 +1,10 @@
+import { Component } from '@custom/component.decorator';
+import { CustomComponent } from '@custom/custom-component';
 import { DropdownItem, EventCode } from './dropdown.model';
 
-export class Dropdown extends HTMLElement {
-  public static register(): void {
-    window.customElements.define('hmw-dropdown', Dropdown);
-  }
-
-  public static template = `
+@Component({
+  selector: 'hmw-dropdown',
+  html: `
     <div class="dropdown">
       <input class="input input--dropdown" data-input="true" />
       <hmw-icon-cross class="input__clear u-display-none" data-clear="true"></hmw-icon-cross>
@@ -13,21 +12,13 @@ export class Dropdown extends HTMLElement {
     </div>
 
     <ul class="dropdown-body u-display-none" data-dropdown-body="true"></ul>
-  `;
-
+  `
+})
+export class Dropdown extends CustomComponent {
   public connectedCallback(): void {
-    this.renderTemplate();
     this.attachClasses();
     this.attachEventListeners();
     this.setInputs();
-  }
-
-  public disconnectedCallback(): void {
-  }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
   }
 
   private attachClasses(): void {
@@ -91,6 +82,3 @@ export class Dropdown extends HTMLElement {
     dropdownBodyRef.innerHTML = html;
   }
 }
-
-const template = document.createElement('template');
-template.innerHTML = Dropdown.template;

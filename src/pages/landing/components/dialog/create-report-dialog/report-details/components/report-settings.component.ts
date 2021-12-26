@@ -1,9 +1,9 @@
-export class ReportSettingsForm extends HTMLElement {
-  public static register(): void {
-    window.customElements.define('hmw-report-settings-form', ReportSettingsForm);
-  }
+import { Component } from '@custom/component.decorator';
+import { CustomComponent } from '@custom/custom-component';
 
-  public static template = `
+@Component({
+  selector: 'hmw-report-settings-form',
+  html: `
     <section class="u-margin-bottom-medium">
       <h4 class="u-margin-top-large">Settings</h4>
 
@@ -59,17 +59,6 @@ export class ReportSettingsForm extends HTMLElement {
         <hmw-checkbox label="Something Else" slot="form-control" class="u-margin-top-default"></hmw-checkbox>
       </hmw-form-group>
     </section>
-  `;
-
-  public connectedCallback(): void {
-    this.renderTemplate();
-  }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
-  }
-}
-
-const template = document.createElement('template');
-template.innerHTML = ReportSettingsForm.template;
+  `
+})
+export class ReportSettingsForm extends CustomComponent {}

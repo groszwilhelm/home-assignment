@@ -1,9 +1,9 @@
-export class IconConfiguration extends HTMLElement {
-  public static register(): void {
-    window.customElements.define('hmw-icon-configuration', IconConfiguration);
-  }
+import { Component } from '@custom/component.decorator';
+import { CustomComponent } from '@custom/custom-component';
 
-  public static template = `
+@Component({
+  selector: 'hmw-icon-configuration',
+  html: `
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
       <g id="Group_908" data-name="Group 908" transform="translate(388 -772)">
         <g id="icons" transform="translate(-388 772)">
@@ -20,20 +20,6 @@ export class IconConfiguration extends HTMLElement {
           </g>
         </g>
       </g>
-    </svg>`;
-
-  public connectedCallback(): void {
-    this.renderTemplate();
-  }
-
-  public disconnectedCallback(): void {
-  }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
-  }
-}
-
-const template = document.createElement('template');
-template.innerHTML = IconConfiguration.template;
+    </svg>`
+})
+export class IconConfiguration extends CustomComponent { }

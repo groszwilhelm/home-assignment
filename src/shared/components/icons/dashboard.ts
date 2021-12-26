@@ -1,9 +1,9 @@
-export class IconDashboard extends HTMLElement {
-  public static register(): void {
-    window.customElements.define('hmw-icon-dashboard', IconDashboard);
-  }
+import { Component } from '@custom/component.decorator';
+import { CustomComponent } from '@custom/custom-component';
 
-  public static template = `
+@Component({
+  selector: 'hmw-icon-dashboard',
+  html: `
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
       <g id="Group_891" data-name="Group 891" transform="translate(530 -34)">
         <g id="icons" transform="translate(-530 34)">
@@ -18,20 +18,6 @@ export class IconDashboard extends HTMLElement {
           </g>
         </g>
       </g>
-    </svg>`;
-
-  public connectedCallback(): void {
-    this.renderTemplate();
-  }
-
-  public disconnectedCallback(): void {
-  }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
-  }
-}
-
-const template = document.createElement('template');
-template.innerHTML = IconDashboard.template;
+    </svg>`
+})
+export class IconDashboard extends CustomComponent { }

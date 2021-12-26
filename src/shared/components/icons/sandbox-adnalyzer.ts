@@ -1,9 +1,9 @@
-export class IconSandboxAnalyzer extends HTMLElement {
-  public static register(): void {
-    window.customElements.define('hmw-icon-sandbox-analyzer', IconSandboxAnalyzer);
-  }
+import { Component } from '@custom/component.decorator';
+import { CustomComponent } from '@custom/custom-component';
 
-  public static template = `
+@Component({
+  selector: 'hmw-icon-sandbox-analyzer',
+  html: `
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
       <g id="Group_905" data-name="Group 905" transform="translate(380 -760)">
         <g id="icons" transform="translate(-380 760)">
@@ -19,20 +19,6 @@ export class IconSandboxAnalyzer extends HTMLElement {
           </g>
         </g>
       </g>
-    </svg>`;
-
-  public connectedCallback(): void {
-    this.renderTemplate();
-  }
-
-  public disconnectedCallback(): void {
-  }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
-  }
-}
-
-const template = document.createElement('template');
-template.innerHTML = IconSandboxAnalyzer.template;
+    </svg>`
+})
+export class IconSandboxAnalyzer extends CustomComponent { }

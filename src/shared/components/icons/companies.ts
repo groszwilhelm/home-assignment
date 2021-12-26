@@ -1,9 +1,9 @@
-export class IconCompanies extends HTMLElement {
-  public static register(): void {
-    window.customElements.define('hmw-icon-companies', IconCompanies);
-  }
+import { Component } from '@custom/component.decorator';
+import { CustomComponent } from '@custom/custom-component';
 
-  public static template = `
+@Component({
+  selector: 'hmw-icon-companies',
+  html: `
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
       <g id="Group_903" data-name="Group 903" transform="translate(412 -594)">
         <g id="icons" transform="translate(-412 594)">
@@ -15,20 +15,6 @@ export class IconCompanies extends HTMLElement {
           </g>
         </g>
       </g>
-    </svg>`;
-
-  public connectedCallback(): void {
-    this.renderTemplate();
-  }
-
-  public disconnectedCallback(): void {
-  }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
-  }
-}
-
-const template = document.createElement('template');
-template.innerHTML = IconCompanies.template;
+    </svg>`
+})
+export class IconCompanies extends CustomComponent { }

@@ -1,7 +1,8 @@
-const { join } = require('path');
+const { join, resolve } = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 
 module.exports = {
   entry: './src/main.ts',
@@ -21,13 +22,14 @@ module.exports = {
       },
       {
         test: /\.ts?$/,
-        use: 'ts-loader',
+        use: 'awesome-typescript-loader',
         exclude: /node_modules/,
       },
     ],
   },
 
   plugins: [
+    new CheckerPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css",
@@ -39,6 +41,9 @@ module.exports = {
 
   resolve: {
     extensions: ['.ts', '.js'],
+    alias: {
+      '@custom': resolve(__dirname, "src/shared/models")
+    },
   },
 
   devServer: {

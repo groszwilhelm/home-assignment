@@ -1,9 +1,9 @@
-export class IconNotifications extends HTMLElement {
-  public static register(): void {
-    window.customElements.define('hmw-icon-notifications', IconNotifications);
-  }
+import { Component } from '@custom/component.decorator';
+import { CustomComponent } from '@custom/custom-component';
 
-  public static template = `
+@Component({
+  selector: 'hmw-icon-notifications',
+  html: `
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
       <g id="Group_1237" data-name="Group 1237" transform="translate(-1310 -13)">
         <rect id="Rectangle_888" data-name="Rectangle 888" width="32" height="32" transform="translate(1310 13)" fill="#fff"/>
@@ -15,21 +15,6 @@ export class IconNotifications extends HTMLElement {
           </g>
         </g>
       </g>
-    </svg>`;
-
-  public connectedCallback(): void {
-    this.renderTemplate();
-  }
-
-  public disconnectedCallback(): void {
-  }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
-  }
-}
-
-const template = document.createElement('template');
-template.innerHTML = IconNotifications.template;
-
+    </svg>`
+})
+export class IconNotifications extends CustomComponent { }

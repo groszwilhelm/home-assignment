@@ -1,9 +1,9 @@
-export class IconRocket extends HTMLElement {
-  public static register(): void {
-    window.customElements.define('hmw-icon-rocket', IconRocket);
-  }
+import { Component } from '@custom/component.decorator';
+import { CustomComponent } from '@custom/custom-component';
 
-  public static template = `
+@Component({
+  selector: 'hmw-icon-rocket',
+  html: `
     <svg id="illustration" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="163" height="157" viewBox="0 0 163 157">
       <defs>
         <linearGradient id="linear-gradient" x1="0.027" y1="0.386" x2="1.012" y2="0.708" gradientUnits="objectBoundingBox">
@@ -109,20 +109,6 @@ export class IconRocket extends HTMLElement {
       <g id="Group_11000" data-name="Group 11000" transform="translate(0 0.328)" clip-path="url(#clip-path-2)">
         <path id="Path_10220" data-name="Path 10220" d="M70.531,252.478l89.452-1.433c-.108-.734-1.181-19.36-1.451-20.049-.222-.65-.425-1.3-.683-1.947a9.752,9.752,0,0,0-1.311-2.23,7.713,7.713,0,0,0-3.612-2.648,6.884,6.884,0,0,0-1.752-.374,17.2,17.2,0,0,0-.615-1.893,10.919,10.919,0,0,0-6.349-6.215,15.236,15.236,0,0,0-6.876-.387,15.77,15.77,0,0,0-2.57.518,7.393,7.393,0,0,0-2.876-3.755c-2.291-1.5-5.369-1.426-7.846-.621a10.523,10.523,0,0,0-2.3,1.074,23.326,23.326,0,0,0-2.772-3.434,17.354,17.354,0,0,0-5.072-3.546,12.79,12.79,0,0,0-11.646.842,12.483,12.483,0,0,0-4.406,4.535c-.272-.08-.548-.152-.831-.209a12.044,12.044,0,0,0-9.217,1.878,16.784,16.784,0,0,0-5.426,6.379,11.462,11.462,0,0,0-7.1,1.917,11.955,11.955,0,0,0-4.824,11.823C70.464,232.835,70.507,252.351,70.531,252.478Z" transform="translate(-32.552 -94.802)" fill="url(#linear-gradient-11)"/>
       </g>
-    </svg>`;
-
-  public connectedCallback(): void {
-    this.renderTemplate();
-  }
-
-  public disconnectedCallback(): void {
-  }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
-  }
-}
-
-const template = document.createElement('template');
-template.innerHTML = IconRocket.template;
+    </svg>`
+})
+export class IconRocket extends CustomComponent { }

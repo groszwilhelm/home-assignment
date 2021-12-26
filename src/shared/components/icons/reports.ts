@@ -1,9 +1,9 @@
-export class IconReports extends HTMLElement {
-  public static register(): void {
-    window.customElements.define('hmw-icon-reports', IconReports);
-  }
+import { Component } from '@custom/component.decorator';
+import { CustomComponent } from '@custom/custom-component';
 
-  public static template = `
+@Component({
+  selector: 'hmw-icon-reports',
+  html: `
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
       <g id="Group_901" data-name="Group 901" transform="translate(415 -426)">
         <g id="icons" transform="translate(-415 426)">
@@ -17,20 +17,6 @@ export class IconReports extends HTMLElement {
           </g>
         </g>
       </g>
-    </svg>`;
-
-  public connectedCallback(): void {
-    this.renderTemplate();
-  }
-
-  public disconnectedCallback(): void {
-  }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
-  }
-}
-
-const template = document.createElement('template');
-template.innerHTML = IconReports.template;
+    </svg>`
+})
+export class IconReports extends CustomComponent { }

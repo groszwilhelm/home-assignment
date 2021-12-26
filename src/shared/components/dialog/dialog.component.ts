@@ -1,14 +1,15 @@
+import { Component } from '@custom/component.decorator';
+import { CustomComponent } from '@custom/custom-component';
 import { dialogService } from './dialog.service';
 
-export class Dialog extends HTMLElement {
-  public static register(): void {
-    window.customElements.define('hmw-dialog', Dialog);
-  }
-
-  public static template = `
+@Component({
+  selector: 'hmw-dialog',
+  html: `
     <div class="dialog-container" data-dialog-container="true"></div>
-  `;
-  
+  `,
+  noImplicitRender: true
+})
+export class Dialog extends CustomComponent {
   private openSubscription: number;
   private closeSubscription: number;
 
@@ -35,7 +36,7 @@ export class Dialog extends HTMLElement {
    * Attaches web component to the current container and sets dialog class on the webcomponent
    */
   private attachDialog = (htmlTemplate: any): void => {
-    this.renderTemplate();
+    this.render(false);
 
     const containerElementRef = this.querySelector('[data-dialog-container]');
     containerElementRef.innerHTML = htmlTemplate;
@@ -53,12 +54,4 @@ export class Dialog extends HTMLElement {
     const rootNode = this.querySelector('[data-dialog-container]');
     this.removeChild(rootNode);
   }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
-  }
 }
-
-const template = document.createElement('template');
-template.innerHTML = Dialog.template;

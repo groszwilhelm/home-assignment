@@ -1,12 +1,11 @@
-import { AlertConfig, AlertType } from './alert.models';
+import { Component } from '@custom/component.decorator';
+import { CustomComponent } from '@custom/custom-component';
+import { AlertConfig } from './alert.models';
 import { alertService } from './alert.service';
 
-export class Alert extends HTMLElement {
-  public static register(): void {
-    window.customElements.define('hmw-alert', Alert);
-  }
-
-  public static template = `
+@Component({
+  selector: 'hmw-alert',
+  html: `
     <div class="alert" data-alert="true">
       <span class="alert__icon"></span>
       
@@ -16,8 +15,9 @@ export class Alert extends HTMLElement {
         <hmw-icon-cross></hmw-icon-cross>
       </span>
     </div>
-  `;
-
+  `
+})
+export class Alert extends CustomComponent {
   private closeTimeout: number = 3000;
   private timeout: NodeJS.Timeout;
 
@@ -48,7 +48,7 @@ export class Alert extends HTMLElement {
 
   private handleOpenEvent(config: AlertConfig): void {
     this.checkForConflictingState();
-    this.renderTemplate();
+    this.render(false);
     this.destroyTemplateAfterMilisecons(this.closeTimeout);
     this.attachClass(config.type);
     this.attachListeners();
@@ -68,11 +68,6 @@ export class Alert extends HTMLElement {
     if (alertNode) {
       this.destroyTemplate();
     }
-  }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
   }
 
   private destroyTemplate = (): void => {
@@ -105,6 +100,3 @@ export class Alert extends HTMLElement {
     alertTextElementRef.innerHTML = text;
   }
 }
-
-const template = document.createElement('template');
-template.innerHTML = Alert.template;

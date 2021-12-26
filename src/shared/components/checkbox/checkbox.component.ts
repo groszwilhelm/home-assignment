@@ -1,11 +1,11 @@
+import { Component } from '@custom/component.decorator';
+import { CustomComponent } from '@custom/custom-component';
+
 let id = 0;
 
-export class Checkbox extends HTMLElement {
-  public static register(): void {
-    window.customElements.define('hmw-checkbox', Checkbox);
-  }
-
-  public static template = `
+@Component({
+  selector: 'hmw-checkbox',
+  html: `
     <div class="checkbox-container">
       <div class="checkbox">
         <input type="checkbox"/>
@@ -13,21 +13,13 @@ export class Checkbox extends HTMLElement {
       </div>
       <label data-label="label"></label>
     </div>
-  `;
-
+  `
+})
+export class Checkbox extends CustomComponent {
   public connectedCallback(): void {
-    this.renderTemplate();
     this.setCheckboxBindingIds();
     this.setInputs();
     this.setClasses();
-  }
-
-  public disconnectedCallback(): void {
-  }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
   }
 
   private setCheckboxBindingIds(): void {
@@ -56,6 +48,3 @@ export class Checkbox extends HTMLElement {
     this.classList.add('u-display-block');
   }
 }
-
-const template = document.createElement('template');
-template.innerHTML = Checkbox.template;

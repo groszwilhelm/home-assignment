@@ -1,9 +1,9 @@
-export class ReportDetailsForm extends HTMLElement {
-  public static register(): void {
-    window.customElements.define('hmw-report-details-form', ReportDetailsForm);
-  }
+import { Component } from '@custom/component.decorator';
+import { CustomComponent } from '@custom/custom-component';
 
-  public static template = `
+@Component({
+  selector: 'hmw-report-details-form',
+  html: `
     <section>
       <h4 class="u-margin-top-large">Details</h4>
       
@@ -40,17 +40,6 @@ export class ReportDetailsForm extends HTMLElement {
         <hmw-input id="details-name" slot="form-control"></hmw-input>
       </hmw-form-group>
     </section>
-  `;
-
-  public connectedCallback(): void {
-    this.renderTemplate();
-  }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
-  }
-}
-
-const template = document.createElement('template');
-template.innerHTML = ReportDetailsForm.template;
+  `
+})
+export class ReportDetailsForm extends CustomComponent {}

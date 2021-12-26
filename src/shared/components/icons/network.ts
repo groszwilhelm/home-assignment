@@ -1,9 +1,9 @@
-export class IconNetwork extends HTMLElement {
-  public static register(): void {
-    window.customElements.define('hmw-icon-network', IconNetwork);
-  }
+import { Component } from '@custom/component.decorator';
+import { CustomComponent } from '@custom/custom-component';
 
-  public static template = `
+@Component({
+  selector: 'hmw-icon-network',
+  html: `
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
       <g id="Group_897" data-name="Group 897" transform="translate(354 -197)">
         <g id="icons" transform="translate(-354 197)">
@@ -33,20 +33,6 @@ export class IconNetwork extends HTMLElement {
           </g>
         </g>
       </g>
-    </svg>`;
-
-  public connectedCallback(): void {
-    this.renderTemplate();
-  }
-
-  public disconnectedCallback(): void {
-  }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
-  }
-}
-
-const template = document.createElement('template');
-template.innerHTML = IconNetwork.template;
+    </svg>`
+})
+export class IconNetwork extends CustomComponent { }

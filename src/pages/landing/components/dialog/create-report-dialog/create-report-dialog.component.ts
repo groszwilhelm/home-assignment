@@ -1,13 +1,12 @@
 import { dialogService } from '../../../../../shared/components/dialog/dialog.service';
 import { AlertConfig, AlertType } from '../../../../../shared/components/alert/alert.models';
 import { alertService } from '../../../../../shared/components/alert/alert.service';
+import { Component } from '../../../../../shared/models/component.decorator';
+import { CustomComponent } from '../../../../../shared/models/custom-component';
 
-export class CreateReportDialog extends HTMLElement {
-  public static register(): void {
-    window.customElements.define('hmw-create-report-dialog', CreateReportDialog);
-  }
-
-  public static template = `
+@Component({
+  selector: 'hmw-create-report-dialog',
+  html: `
     <hmw-dialog-header title="Create Report"></hmw-dialog-header>
 
     <hmw-dialog-section>
@@ -18,16 +17,11 @@ export class CreateReportDialog extends HTMLElement {
       <button class="btn btn--primary" data-save="true">Save</button>
       <button class="btn btn--secondary" data-cancel="true">Cancel</button>
     </hmw-dialog-footer>
-  `;
-
+  `
+})
+export class CreateReportDialog extends CustomComponent {
   public connectedCallback(): void {
-    this.renderTemplate();
     this.attachEventListeners();
-  }
-
-  private renderTemplate(): void {
-    const node = document.importNode(template.content, true);
-    this.appendChild(node);
   }
 
   private attachEventListeners(): void {
@@ -49,6 +43,3 @@ export class CreateReportDialog extends HTMLElement {
     alertService.open(config);
   }
 }
-
-const template = document.createElement('template');
-template.innerHTML = CreateReportDialog.template;
